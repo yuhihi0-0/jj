@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <a href="index.html" class="home-button">Home</a>
+
     <header class="score-header">
         💖 Love Points: <span id="xp-count">+0</span>
     </header>
@@ -72,7 +74,7 @@
         function addNewStone() {
             const newStone = document.createElement('div');
             newStone.classList.add('stone');
-            newStone.textContent = `어떻게 만드는지 잘 몰라서 그냥 냅뒀오..ㅎ 오빠 생일 축하햄ㅎㅎ`;
+            newStone.textContent = `새로고침 해두 저장되게 하는 법 몰라서 그냥 냅뒀오..ㅎ 오빠 생일 축하햄ㅎㅎ`;
             bridgeContainer.appendChild(newStone);
             currentQuest = getRandomQuest();
             questText.textContent = `오늘의 퀘스트: ${currentQuest}`;

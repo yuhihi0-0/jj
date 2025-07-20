@@ -150,3 +150,26 @@ textarea {
     background: #ff69b4;
     color: white;
 }
+
+.home-button {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    padding: 8px 14px;
+    font-size: 1.2em;
+    font-family: 'Cute Font', cursive;
+    background-color: #e6f7ff;
+    /* 하늘색 */
+    border: 2px solid #b3d9ff;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #444;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1000;
+}
+
+.home-button:hover {
+    background-color: #d0ecff;
+    transform: scale(1.05);
+}
