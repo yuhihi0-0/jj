@@ -1,0 +1,159 @@
+/* 기본 설정 */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cute Font', 'Gaegu', sans-serif;
+    background: linear-gradient(to bottom right, #fff1f8, #f0faff);
+    color: #444;
+}
+
+
+/* 헤더 스타일 */
+
+header {
+    background-color: #ffccdd;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px dashed #ffaacc;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ff6699;
+    text-shadow: 1px 1px #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* 하트 이미지 아이콘 */
+
+.emoji-icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+
+/* 네비게이션 메뉴 */
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    /* 👉 줄 바꿈 허용 */
+    justify-content: center;
+    gap: 20px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #ff6699;
+    background-color: #fff0f5;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid hsl(341, 100%, 84%);
+    white-space: nowrap;
+    /* 👉 텍스트 줄 바꿈 방지 */
+}
+
+nav ul li a:hover {
+    background-color: #ffe6ee;
+    transform: scale(1.05);
+}
+
+
+/* 메인 콘텐츠 영역 */
+
+main {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.welcome h2 {
+    font-size: 2rem;
+    color: #ff6699;
+    margin-bottom: 10px;
+}
+
+.welcome p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+
+/* 메인 일러스트 */
+
+.main-illustration {
+    width: 250px;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+
+.main-illustration:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.welcome h2 {
+    font-size: 2rem;
+    color: #ff6699;
+    margin-bottom: -10px;
+    /* 🔽 더 작게 */
+}
+
+.welcome p {
+    font-size: 1.2rem;
+    margin-bottom: 1px;
+    /* 🔽 줄이기 */
+}
+
+.welcome {
+    margin-bottom: 0;
+    /* 🔽 섹션 아래 간격 없애기 */
+    padding-bottom: 0;
+}
+
+
+/* 하트/딸기 버튼 아이콘 */
+
+.icon-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.icon-button {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.4);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+
+/* 푸터 */
+
+footer {
+    background-color: #fff0f5;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #aa5588;
+    border-top: 2px dotted #ffaacc;
+}

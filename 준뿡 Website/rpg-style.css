@@ -1,0 +1,152 @@
+/* 기본 설정 */
+
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Gaegu&display=swap');
+body {
+    font-family: 'Cute Font', 'Gaegu', 'VT323', monospace;
+    background-image: url('images/forest-background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+
+/* Love Points 헤더 */
+
+.score-header {
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    font-size: 2em;
+    padding: 10px;
+    border-bottom: 2px dashed pink;
+}
+
+
+/* 퀘스트 박스 */
+
+#quest-box {
+    background: rgba(255, 240, 250, 0.9);
+    border: 2px dashed #ff99cc;
+    border-radius: 15px;
+    margin: 20px auto;
+    padding: 15px;
+    width: fit-content;
+    font-size: 1.5em;
+    text-align: center;
+    color: #cc3366;
+}
+
+
+/* 돌다리 섹션 */
+
+.map-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bridge-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stone {
+    background: #fff0f5;
+    border: 2px solid #ffb6c1;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    cursor: default;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+
+/* 카운트다운 */
+
+#countdown {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #663366;
+}
+
+
+/* 입력 섹션 */
+
+.dual-input-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
+.side {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 20px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.character {
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+    animation: floaty 2.5s ease-in-out infinite;
+}
+
+.user {
+    background-image: url('images/yujin.png');
+}
+
+.partner {
+    background-image: url('images/junbbung.png');
+}
+
+@keyframes floaty {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1em;
+    resize: none;
+    font-family: 'Cute Font', 'Gaegu', 'VT323', monospace;
+}
+
+.submit-btn {
+    margin-top: 10px;
+    background: #ffb6c1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: 'Cute Font', 'Gaegu', 'VT323', monospace;
+}
+
+.submit-btn:hover {
+    background: #ff69b4;
+    color: white;
+}
