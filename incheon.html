@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incheon Trip</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
+        body {
+            font-family: 'Gaegu', cursive;
+            background: linear-gradient(135deg, #fbf9f4 0%, #fdf6ed 100%);
+            margin: 0;
+            padding: 0;
+            color: #5b4a3d;
+        }
+        
+        body {
+            background-image: url('incheon-images/back.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+        
+        .home-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #f9ede3;
+            color: #6a5544;
+            border: 2px dashed #e1d2c2;
+            border-radius: 12px;
+            padding: 6px 14px;
+            font-size: 1em;
+            text-decoration: none;
+            box-shadow: 2px 2px 6px rgba(180, 150, 120, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .home-button:hover {
+            background-color: #f5e0d4;
+            transform: scale(1.06);
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border-bottom: 2px dashed #e6d8c6;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+        
+        h1 {
+            font-size: 2.7em;
+            margin: 0;
+            color: #8a7059;
+            text-shadow: 1px 1px 0 #fff5ec;
+        }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 60px 20px;
+            position: relative;
+        }
+        
+        .photo-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            cursor: pointer;
+        }
+        
+        .photo {
+            background: none;
+            padding: 20px;
+            border: none;
+            border-radius: 30px;
+            width: 240px;
+            height: 300px;
+            object-fit: cover;
+            box-shadow: 5px 7px 18px rgba(160, 140, 120, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .photo:hover {
+            transform: scale(1.04);
+            box-shadow: 8px 10px 20px rgba(120, 100, 90, 0.3);
+        }
+        
+        .caption {
+            display: none;
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #7c6351;
+            font-style: italic;
+            background: rgba(255, 245, 230, 0.6);
+            padding: 6px 10px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 6px rgba(160, 130, 100, 0.1);
+        }
+        
+        .photo-wrapper.clicked .caption {
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.6);
+            border-top: 2px dashed #e6d8c6;
+            font-size: 1em;
+            color: #9b7e67;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.03);
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(40, 30, 20, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            background: #f9f1dc;
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 90%;
+            text-align: center;
+            animation: fadeIn 0.3s ease-in-out;
+            box-shadow: 0 0 20px rgba(100, 80, 60, 0.2);
+        }
+        
+        .lightbox-content img {
+            max-width: 90vw;
+            max-height: 70vh;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .lightbox-content p {
+            margin-top: 12px;
+            font-size: 1.2em;
+            color: #654c3a;
+        }
+        
+        .lightbox-content button {
+            margin-top: 16px;
+            padding: 8px 16px;
+            font-size: 1em;
+            background-color: #f1d9c8;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #5c4032;
+            font-family: 'Gaegu', cursive;
+            box-shadow: 2px 2px 5px rgba(180, 140, 110, 0.2);
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+
+
+
+
+
+</head>
+
+<body>
+
+    <a class="home-button" href="travel.html">← Back</a>
+    <header>
+        <h1>Incheon Trip Memories</h1>
+    </header>
+
+
+    <div class="floating-hearts">
+        <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="heart" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="heart" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="heart" style="left: 70%; animation-delay: 1s;"></div>
+        <div class="heart" style="left: 90%; animation-delay: 3s;"></div>
+    </div>
+
+    <section class="gallery">
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/1.jpg', '오빠 멋있오ㅎㅎ 내 준뿡이🐻')">
+            <img class="photo" src="incheon-images/1.jpg" alt="Incheon Memory 1">
+            <p class="caption">인천 여행의 추억 1번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/2.jpg', '나도 오빠 따라할랭ㅎ-ㅎ')">
+            <img class="photo" src="incheon-images/2.jpg" alt="Incheon Memory 2">
+            <p class="caption">인천 여행의 추억 2번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/3.jpg', '이때 넘 좋았는뎅..')">
+            <img class="photo" src="incheon-images/3.jpg" alt="Incheon Memory 3">
+            <p class="caption">인천 여행의 추억 3번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/4.jpg', '뿌이🫶')">
+            <img class="photo" src="incheon-images/4.jpg" alt="Incheon Memory 4">
+            <p class="caption">인천 여행의 추억 4번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/5.jpg', '뜨끈뜨끈 쫀뜩쫀뜩 쫀디기ㅎㅎ')">
+            <img class="photo" src="incheon-images/5.jpg" alt="Incheon Memory 5">
+            <p class="caption">인천 여행의 추억 5번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/6.jpg', 'ㅎㅎㅎ 오빠랑 같이💕')">
+            <img class="photo" src="incheon-images/6.jpg" alt="Incheon Memory 6">
+            <p class="caption">인천 여행의 추억 6번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/7.jpg', '오빠랑 본 이뿐 바다..')">
+            <img class="photo" src="incheon-images/7.jpg" alt="Incheon Memory 7">
+            <p class="caption">인천 여행의 추억 7번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/8.jpg', '하뚜하뚜 넘 좋앙')">
+            <img class="photo" src="incheon-images/8.jpg" alt="Incheon Memory 8">
+            <p class="caption">인천 여행의 추억 8번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/9.jpg', '오빠랑 처음 찍은 인생네컷🐰💗🐶')">
+            <img class="photo" src="incheon-images/9.jpg" alt="Incheon Memory 9">
+            <p class="caption">인천 여행의 추억 9번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/10.jpg', '뒤에 바다도 이쁘게 찍었넹ㅎㅎ')">
+            <img class="photo" src="incheon-images/10.jpg" alt="Incheon Memory 10">
+            <p class="caption">인천 여행의 추억 10번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/11.jpg', '엄청 여러각도로 마니 찍었당 그칭ㅎ-ㅎ')">
+            <img class="photo" src="incheon-images/11.jpg" alt="Incheon Memory 11">
+            <p class="caption">인천 여행의 추억 11번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/12.jpg', '여기 생각난당.. 오빠랑 산책한 곳🌷')">
+            <img class="photo" src="incheon-images/12.jpg" alt="Incheon Memory 12">
+            <p class="caption">인천 여행의 추억 12번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/13.jpg', '뒤에 숨은 준뿡이🐣')">
+            <img class="photo" src="incheon-images/13.jpg" alt="Incheon Memory 13">
+            <p class="caption">인천 여행의 추억 13번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/14.jpg', '뿌이 뿌이💞')">
+            <img class="photo" src="incheon-images/14.jpg" alt="Incheon Memory 14">
+            <p class="caption">인천 여행의 추억 14번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/15.jpg', '뿡뿡이랑🐥')">
+            <img class="photo" src="incheon-images/15.jpg" alt="Incheon Memory 15">
+            <p class="caption">인천 여행의 추억 15번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/16.jpg', '쭌 뿡뿡뿡🎀')">
+            <img class="photo" src="incheon-images/16.jpg" alt="Incheon Memory 16">
+            <p class="caption">인천 여행의 추억 16번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/17.jpg', '완전 오르막길이양')">
+            <img class="photo" src="incheon-images/17.jpg" alt="Incheon Memory 17">
+            <p class="caption">인천 여행의 추억 17번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/18.jpg', '내 인생 첫 뿌링뿌링 뿌링클!')">
+            <img class="photo" src="incheon-images/18.jpg" alt="Incheon Memory 18">
+            <p class="caption">인천 여행의 추억 18번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/19.jpg', '오빠아아앙')">
+            <img class="photo" src="incheon-images/19.jpg" alt="Incheon Memory 19">
+            <p class="caption">인천 여행의 추억 19번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/20.jpg', '고개 푸우욱 뿡뿡이')">
+            <img class="photo" src="incheon-images/20.jpg" alt="Incheon Memory 20">
+            <p class="caption">인천 여행의 추억 20번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/21.jpg', '뿡뿡이 뿌이🍡')">
+            <img class="photo" src="incheon-images/21.jpg" alt="Incheon Memory 21">
+            <p class="caption">인천 여행의 추억 21번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/22.jpg', '캐캐캐캐 캐로캐로ㅎㅎ')">
+            <img class="photo" src="incheon-images/22.jpg" alt="Incheon Memory 22">
+            <p class="caption">인천 여행의 추억 22번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/23.jpg', '뚜웅')">
+            <img class="photo" src="incheon-images/23.jpg" alt="Incheon Memory 23">
+            <p class="caption">인천 여행의 추억 23번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/24.jpg', 'ㅎㅎ🐶')">
+            <img class="photo" src="incheon-images/24.jpg" alt="Incheon Memory 24">
+            <p class="caption">인천 여행의 추억 24번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/25.jpg', '뿌웅')">
+            <img class="photo" src="incheon-images/25.jpg" alt="Incheon Memory 25">
+            <p class="caption">인천 여행의 추억 25번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/26.jpg', '아무것도 안보여 근데 준뿡이 귀는 보여ㅎㅎ')">
+            <img class="photo" src="incheon-images/26.jpg" alt="Incheon Memory 26">
+            <p class="caption">인천 여행의 추억 26번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/27.jpg', '오빠가 내 앨범에 남겨둔 하뚜')">
+            <img class="photo" src="incheon-images/27.jpg" alt="Incheon Memory 27">
+            <p class="caption">인천 여행의 추억 27번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/28.jpg', '내 짝꿍 감자ㅎㅎ 감튀를 사랑하는 이로부터..')">
+            <img class="photo" src="incheon-images/28.jpg" alt="Incheon Memory 28">
+            <p class="caption">인천 여행의 추억 28번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/29.jpg', '쫀드기집이당📌')">
+            <img class="photo" src="incheon-images/29.jpg" alt="Incheon Memory 29">
+            <p class="caption">인천 여행의 추억 29번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/30.jpg', '돌아가는 길이넹.. 테루테루는 항상 행복하징')">
+            <img class="photo" src="incheon-images/30.jpg" alt="Incheon Memory 30">
+            <p class="caption">인천 여행의 추억 30번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/31.jpg', '다시 꽉 잡아주께')">
+            <img class="photo" src="incheon-images/31.jpg" alt="Incheon Memory 31">
+            <p class="caption">인천 여행의 추억 31번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/32.jpg', '누군뎅 이렇게 멋진고양??')">
+            <img class="photo" src="incheon-images/32.jpg" alt="Incheon Memory 32">
+            <p class="caption">인천 여행의 추억 32번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/33.jpg', '오빠랑 나야ㅎㅎ 나 캐리어 끌고 가고 이써')">
+            <img class="photo" src="incheon-images/33.jpg" alt="Incheon Memory 33">
+            <p class="caption">인천 여행의 추억 33번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/34.jpg', '뚜둥! 배고팡..')">
+            <img class="photo" src="incheon-images/34.jpg" alt="Incheon Memory 34">
+            <p class="caption">인천 여행의 추억 34번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/35.jpg', '뚱뚜루둥! 오빠가 사준 고치돈💘')">
+            <img class="photo" src="incheon-images/35.jpg" alt="Incheon Memory 35">
+            <p class="caption">인천 여행의 추억 35번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/36.jpg', '멀리서 웃고 있는 준뿡이')">
+            <img class="photo" src="incheon-images/36.jpg" alt="Incheon Memory 36">
+            <p class="caption">인천 여행의 추억 36번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/37.jpg', '오빠가 나 보고이써ㅎ-ㅎ')">
+            <img class="photo" src="incheon-images/37.jpg" alt="Incheon Memory 37">
+            <p class="caption">인천 여행의 추억 37번</p>
+        </div>
+        <div class="photo-wrapper" onclick="openLightbox('incheon-images/38.jpg', '내가 비행기에서 가방을 뒤적뒤적 거리면서 꺼내서 계속 보던 사진이야')">
+            <img class="photo" src="incheon-images/38.jpg" alt="Incheon Memory 38">
+            <p class="caption">인천 여행의 추억 38번</p>
+        </div>
+
+
+    </section>
+    <footer>
+        <p>That was a lovely trip to Incheon ✿</p>
+    </footer>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="">
+            <p id="lightbox-caption"></p>
+            <button onclick="closeLightbox()">Close ✖</button>
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(imageSrc, caption) {
+            document.getElementById("lightbox").style.display = "flex";
+            document.getElementById("lightbox-img").src = imageSrc;
+            document.getElementById("lightbox-caption").textContent = caption;
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
