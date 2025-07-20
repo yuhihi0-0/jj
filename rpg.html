@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love Quest RPG - Forest Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="rpg-style.css">
+</head>
+
+<body>
+    <header class="score-header">
+        💖 Love Points: <span id="xp-count">+0</span>
+    </header>
+
+    <section class="quest-section">
+        <div id="quest-box" style="text-align: center; font-size: 1.8em; font-weight: bold; margin: 20px auto;">
+            <span id="quest-text">로딩 중...</span>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="bridge-container" id="bridge-container"></div>
+        <div id="countdown" style="text-align:center; font-size: 1.2em; margin-top: 10px;"></div>
+    </section>
+
+    <section class="dual-input-section">
+        <div class="side user-side">
+            <div class="character user" id="user-character"></div>
+            <textarea id="user-input" placeholder="진뿡이의 뿡 💌"></textarea>
+            <button class="submit-btn" id="user-submit">진뿡이 제출하기</button>
+        </div>
+
+        <div class="side partner-side">
+            <div class="character partner" id="partner-character"></div>
+            <textarea id="partner-input" placeholder="준뿡이의 뿡 💌"></textarea>
+            <button class="submit-btn" id="partner-submit">준뿡이 제출하기</button>
+        </div>
+    </section>
+
+    <script>
+        const quests = [
+            "오늘의 한마디를 적어줘 뿡!",
+            "오늘의 추천 노래를 적어줘 뿡!",
+            "오늘 기억에 남는 순간은?",
+            "서로에게 하고 싶은 칭찬 한마디!",
+            "요즘 빠진 음식은 뭐야?",
+            "오늘의 기분을 색으로 표현한다면?"
+        ];
+
+        const bridgeContainer = document.getElementById('bridge-container');
+        const xpCount = document.getElementById('xp-count');
+        const userInput = document.getElementById('user-input');
+        const partnerInput = document.getElementById('partner-input');
+        const userSubmitBtn = document.getElementById('user-submit');
+        const partnerSubmitBtn = document.getElementById('partner-submit');
+        const countdownDiv = document.getElementById('countdown');
+        const questText = document.getElementById('quest-text');
+
+        let xp = 0;
+        let submittedByUser = false;
+        let submittedByPartner = false;
+        let countdownStarted = false;
+        let currentQuest = '';
+        let currentLevel = 1;
+
+        function getRandomQuest() {
+            return quests[Math.floor(Math.random() * quests.length)];
+        }
+
+        function addNewStone() {
+            const newStone = document.createElement('div');
+            newStone.classList.add('stone');
+            newStone.textContent = `어떻게 만드는지 잘 몰라서 그냥 냅뒀오..ㅎ 오빠 생일 축하햄ㅎㅎ`;
+            bridgeContainer.appendChild(newStone);
+            currentQuest = getRandomQuest();
+            questText.textContent = `오늘의 퀘스트: ${currentQuest}`;
+            enableInputs(true);
+        }
+
+        function enableInputs(enable) {
+            userInput.disabled = !enable;
+            partnerInput.disabled = !enable;
+            userSubmitBtn.disabled = !enable || submittedByUser;
+            partnerSubmitBtn.disabled = !enable || submittedByPartner;
+        }
+
+        function resetInputs() {
+            userInput.value = '';
+            partnerInput.value = '';
+            submittedByUser = false;
+            submittedByPartner = false;
+            enableInputs(false);
+        }
+
+        function startCountdown() {
+            if (countdownStarted) return;
+            countdownStarted = true;
+            let remaining = 86400;
+            const interval = setInterval(() => {
+                const hours = String(Math.floor(remaining / 3600)).padStart(2, '0');
+                const minutes = String(Math.floor((remaining % 3600) / 60)).padStart(2, '0');
+                const seconds = String(remaining % 60).padStart(2, '0');
+                countdownDiv.textContent = `⏳ 다음 퀘스트까지 남은 시간: ${hours}:${minutes}:${seconds}`;
+
+                if (remaining <= 0) {
+                    clearInterval(interval);
+                    countdownDiv.textContent = '';
+                    currentLevel++;
+                    addNewStone();
+                    countdownStarted = false;
+                }
+                remaining--;
+            }, 1000);
+        }
+
+        function checkSubmitCondition() {
+            const userText = userInput.value.trim();
+            const partnerText = partnerInput.value.trim();
+
+            if (userText && partnerText && submittedByUser && submittedByPartner) {
+                xp++;
+                xpCount.textContent = `+${xp}`;
+                questText.textContent = `오늘의 퀘스트 완료!`;
+                startCountdown();
+                resetInputs();
+            }
+        }
+
+        userSubmitBtn.addEventListener('click', () => {
+            const userText = userInput.value.trim();
+            if (!userText) {
+                alert('진뿡이의 메시지를 입력해주세요!');
+                return;
+            }
+            submittedByUser = true;
+            userSubmitBtn.disabled = true;
+            alert("유진이 제출 완료! 상대방도 제출하면 다음 퀘스트로 넘어가요 ✨");
+            checkSubmitCondition();
+        });
+
+        partnerSubmitBtn.addEventListener('click', () => {
+            const partnerText = partnerInput.value.trim();
+            if (!partnerText) {
+                alert('준뿡이의 메시지를 입력해주세요!');
+                return;
+            }
+            submittedByPartner = true;
+            partnerSubmitBtn.disabled = true;
+            alert("준뿡이 제출 완료! 다음 퀘스트로 이동합니다 💖");
+            checkSubmitCondition();
+        });
+
+        addNewStone();
+    </script>
+</body>
+
+</html>
